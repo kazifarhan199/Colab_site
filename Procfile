@@ -1,1 +1,1 @@
-web: gunicorn VootingWebsite.wsgi:application --log-file -
+web: gunicorn Colab_site.wsgi:application --log-file -
