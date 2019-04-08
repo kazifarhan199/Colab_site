@@ -1,0 +1,50 @@
+
+    {%extends 'header.html'%}
+    {%block content%}
+  <div class="container">
+        <h1>DashBoard</h1>
+        <hr>
+        <div style="color: red">
+        {% if form.errors %}
+            {% for error in form.errors.values %}
+                {{error}}
+            {% endfor %}
+        {% endif %}
+        </div>
+        {% for object in object_list %}
+          <div class="collection">
+            <a href="{% url 'Projects-edit' object.id %}" class="collection-item 
+            {% if object.published %}
+            active
+            {% endif %}
+            ">
+                {{object}}
+            </a>
+        </div>
+        {%empty%}
+            
+              <h3>No thing found</h3>
+            
+        {%endfor%}
+    
+    </div>
+
+    <!-- Add Option button -->
+    <div id="Adder" >
+        <div style="padding:20px;right:10px;bottom:20px;position:fixed" >   
+                <a href="{%url 'Projects-create' %}" class="btn-floating btn-large waves-effect waves-light red right " ><i class="material-icons">add</i></a>
+        </div>
+    </div>
+
+    <br>
+    <br><br>
+    <br><br>
+
+    <script type="text/javascript">
+    var urlParams = new URLSearchParams(window.location.search);
+    var p = urlParams.get('q');
+    document.getElementById('q').value = p;
+    </script>	
+
+
+    {%endblock%}

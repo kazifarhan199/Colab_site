@@ -1,0 +1,14 @@
+    {%extends 'header.html'%}
+{% block content %}
+<div class="container">
+<h1>Profile <a class="btn" href="{% url 'Accounts-edit' %}">Edit</a> <a class="btn red" href="{% url 'Accounts-delete'%}">Delete</a> </h1>
+<hr>
+	<h5>Email : {{object.email}}</h5>
+	<h5>Name : {{object}}</h5>
+<a style="float:right" class="btn" href="{% url 'password_change' %}">Change Password</a>	
+</div>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

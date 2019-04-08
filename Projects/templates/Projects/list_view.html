@@ -1,0 +1,40 @@
+
+    {%extends 'header.html'%}
+    {%block content%}
+  <div class="container">
+        <h1>All Projects</h1>
+        <hr>
+        <div style="color: red">
+        {% if form.errors %}
+            {% for error in form.errors.values %}
+                {{error}}
+            {% endfor %}
+        {% endif %}
+        </div>
+        {% for object in object_list %}
+          <div class="collection">
+            <a href="{%url 'Projects-detail' object.id %}" class="collection-item active">
+                {{object}}
+            </a>
+        </div>
+        {%empty%}
+            
+              <h3>No thing found</h3>
+            
+        {%endfor%}
+    
+    </div>
+
+
+    <br>
+    <br><br>
+    <br><br>
+
+    <script type="text/javascript">
+    var urlParams = new URLSearchParams(window.location.search);
+    var p = urlParams.get('q');
+    document.getElementById('q').value = p;
+    </script>	
+
+
+    {%endblock%}
