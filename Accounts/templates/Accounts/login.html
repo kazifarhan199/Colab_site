@@ -1,43 +1,38 @@
-    {%extends 'header.html'%}
-
+{%extends 'header.html'%}
 {% block content %}
 <div class="container">
-<center>
-    
-<h1>Login</h1>
-<hr>
-</center>
-<div style="color: red">
-	
-{% if form.errors %}
-<p>Your email and password didn't match. Please try again.</p>
-{% endif %}
+    <center>
+        <h1>Login</h1>
+        <hr>
+    </center>
+    <div style="color: red">
 
-{% if next %}
-    {% if user.is_authenticated %}
-    <p>Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
-    {% else %}
-    <p>Please login to see this page.</p>
-    {% endif %}
-{% endif %}
+        {% if form.errors %}
+        <p>Your email and password didn't match. Please try again.</p>
+        {% endif %}
+
+        {% if next %}
+        {% if user.is_authenticated %}
+        <p>Your account doesn't have access to this page. To proceed,
+            please login with an account that has access.</p>
+        {% else %}
+        <p>Please login to see this page.</p>
+        {% endif %}
+        {% endif %}
+    </div>
+
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" class="btn" value="login">
+        <input type="hidden" name="next" value="{{ next }}">
+    </form>
+
+    {# Assumes you setup the password_reset view in your URLconf #}
+    <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+    <br>
+    <p><a href="{% url 'Accounts-register' %}">Not Joined yet!, register</a></p>
 </div>
-
-<form method="post" action="{% url 'login' %}">
-{% csrf_token %}
-    {{form.as_p}}
-<input type="submit" class="btn" value="login">
-<input type="hidden" name="next" value="{{ next }}">
-</form>
-
-{# Assumes you setup the password_reset view in your URLconf #}
-<!-- <p><a href="{% url 'password_reset' %}">Lost password?</a></p> -->
-<br>
-<p><a href="{% url 'Accounts-register' %}">Not Joined yet!, register</a></p>
-</div>
-<script type="text/javascript">
-	document.querySelector("label[for=id_username]").innerHTML = "Email"
-</script>
 <script type="text/javascript">
 	document.querySelector('.errorlist').style.display = 'none'
 </script>

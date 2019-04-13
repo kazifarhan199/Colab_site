@@ -1,14 +1,59 @@
-    {%extends 'header.html'%}
+{%extends 'header.html'%}
 {% block content %}
 <div class="container">
-<h1>Profile <a class="btn" href="{% url 'Accounts-edit' %}">Edit</a> <a class="btn red" href="{% url 'Accounts-delete'%}">Delete</a> </h1>
-<hr>
-	<h5>Email : {{object.email}}</h5>
-	<h5>Name : {{object}}</h5>
-<a style="float:right" class="btn" href="{% url 'password_change' %}">Change Password</a>	
+	<h2>Hi {{object.name}} <a class="btn" href="{% url 'Accounts-edit' %}"
+			style="float:right">Edit</a> </h2>
+	<hr>
+	<div style="color:red">
+			{% if messages %}
+			<div class="span12">
+			{% for message in messages %}
+					<div class="alert alert-{{ message.tags }}">
+							{{ message|safe }}
+					</div>
+			{% endfor %}
+			</div>
+			{% endif %}
+	</div>
+	<div class="row">
+		<div class="col s4 m8 l4">
+			<img src="{{object.image.url}}" alt="img"
+				style="max-height:300px;max-width:300px;padding:40px">
+		</div>
+		<div class="col s12 m6 l8">
+			<div style="padding:40px">
+				<h5>Email : <b>{{object}}</b></h5>
+				<h5>Name : <b>{{object.name}}</b></h5>
+				<h5>GitHub name : <b>{{ object.github_name}}</b></h5>
+			</div>
+		</div>
+	</div>
+
+  <div class="table-showcase">
+    <table class="showcase">
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Programming language</th>
+        <th>Date Created</th>
+      </tr>
+      {% for repo in repos %}
+   	  <tr>
+        <td><a href="{{repo.url}}">{{repo.name}}</a></td>
+        <td>{{repo.discription}}</td>
+        <td>{{repo.languages}}</td>
+        <td>{{repo.created_at}}</th>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+	<br><br>
+	<a style="float:right ;" class="btn green" href="{% url 'github-repos' %}">Update Projects</a>
+	<br>
+	<br>
+	<a style="float:right" class="btn" href="{% url 'password_change' %}">Change
+		Password</a>
 </div>
-<br>
-<br>
-<br>
-<br>
+<br><br><br><br>
 {% endblock %}

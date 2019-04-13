@@ -7,4 +7,5 @@ urlpatterns = [
     path('detail/<pk>', Projects_detail_view.as_view(), name='Projects-detail'),
     path('dashboard/', Projects_Dashboard_List.as_view(), name='Projects-dashboard'),
     path('dashboard/edit/<pk>', Projects_Dashboard_Edit.as_view(), name='Projects-edit'),
+
 ]   

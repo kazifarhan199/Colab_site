@@ -1,20 +1,22 @@
-    {%extends 'header.html'%}
+{%extends 'header.html'%}
 {% block content %}
 <div class="container">
-<h1>Edit Profile</h1>
-<hr>
-<div style="color: red">
-{% if form.errors %}
-	{% for error in form.errors.values %}
+	<h1>Edit Profile </h1>
+		<hr>
+		<div style="color: red">
+		{% if form.errors %}
+		{% for error in form.errors.values %}
 		{{error}}
-	{% endfor %}
-{% endif %}
-</div>
-<form method="post", name='form'>
-	{% csrf_token %}
-    {{ form.as_p }}
-    <input class="btn" type="submit" value="Update">
-</form>
+		{% endfor %}
+		{% endif %}
+	</div>
+	<form method="post" , name='form' enctype="multipart/form-data">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<br>
+		<br>
+		<input class="btn" type="submit" value="Update">
+		<a class="btn red" href="{% url 'Accounts-delete'%}" style="float:right">Delete</a> 
+	</form>
 </div>
 {% endblock %}
-

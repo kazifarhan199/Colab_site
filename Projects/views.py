@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from .models import Projects_model
 from django.db.models import Q
 from braces.views import LoginRequiredMixin, AnonymousRequiredMixin
+from django.contrib import messages 
 
 class Projects_List(ListView):
     model = Projects_model
@@ -23,8 +24,6 @@ class Projects_Dashboard_List(LoginRequiredMixin, ListView):
     def get_queryset(self):
         context = self.model.objects.filter(user=self.request.user).order_by('-id')
         return context
-
-
 
 class Projects_detail_view(DetailView):
     model = Projects_model
