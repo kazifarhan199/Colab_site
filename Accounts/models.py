@@ -71,3 +71,7 @@ class Github_model(models.Model):
     discription = models.TextField()
     languages = models.CharField(max_length=800)
     created_at = models.DateField()
+    stars = models.IntegerField()
+
+    def __str__(self):
+        return self.name

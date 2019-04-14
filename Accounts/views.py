@@ -16,18 +16,18 @@ from django.contrib.auth.decorators import login_required
 
 
 class ProfileUserView(LoginRequiredMixin, DetailView):
-    model = get_user_model()
-    template_name = 'Accounts/profile_user.html'
+	model = get_user_model()
+	template_name = 'Accounts/profile_user.html'
 
-    def get_object(self, queryset=None):
-        obj = self.request.user
-        return obj
+	def get_object(self, queryset=None):
+		obj = self.request.user
+		return obj
 
-    def get_context_data(self, *args, **kwargs):
-        context = super(ProfileUserView, self).get_context_data(**kwargs)
-        context['object'] = User.objects.get(pk = self.kwargs['pk'])
-        context['repos'] = Github_model.objects.filter(user = self.kwargs['pk'])
-        return context
+	def get_context_data(self, *args, **kwargs):
+		context = super(ProfileUserView, self).get_context_data(**kwargs)
+		context['object'] = User.objects.get(pk = self.kwargs.get('pk') if self.kwargs.get('pk') else self.request.user.id)
+		context['repos'] = Github_model.objects.filter(user = self.kwargs.get('pk') if self.kwargs.get('pk') else self.request.user.id).order_by('-stars', 'name')[:5]
+		return context
 
 class CreateUserView(AnonymousRequiredMixin, CreateView):
 	model = get_user_model()
@@ -56,10 +56,8 @@ class LoginUserView(AnonymousRequiredMixin, LoginView):
     template_name = 'Accounts/login.html'
 
 class LogoutUserView(LoginRequiredMixin, LogoutView):
-    template_name = 'registration/logged_out.html'
-    next_page = reverse_lazy('Accounts-login')
-    success_url = reverse_lazy('Accounts-login')
-
+	template_name = 'registration/logged_out.html'
+	next_page = reverse_lazy('Accounts-login')
 
 class UpdateUserView(LoginRequiredMixin, UpdateView):
 	model = get_user_model()
@@ -102,30 +100,28 @@ class DeleteUserView(LoginRequiredMixin, DeleteView):
 
 @login_required
 def Check_git_hub(request):
+	print(request.user.github_name)
 	if request.user.github_name:
 
-		try:
+		# try:
 			req = requests.get(f"https://api.github.com/users/{request.user.github_name}/repos")
-			i['description']
+			json = req.json()
+			json[0]['description']
 
 			for i in Github_model.objects.filter(user = request.user):
 				i.delete()
 
-			for i in req.json():
-				desc = i['description']
-				if not desc:
-					desc = ''
-
+			for i in json:
 				crtd = i['created_at']
 				created_at = datetime.datetime.strptime(crtd, "%Y-%m-%dT%H:%M:%SZ")
 
 				Github_model.objects.create(user=request.user, name=i['name'], 
-				url=i['svn_url'], discription=desc, languages=i['language'],
-				created_at=created_at, size=size_of)
-		except:
-			messages.error(request, "You are out of requests for this hour")
+				url=i['svn_url'], discription=i['description'] or '', languages=i['language'] or '',
+				created_at=created_at, stars=i['stargazers_count'])
+		# except:
+		# 	messages.error(request, "You are out of requests for this hour")
 
 	else:
 		messages.error(request, "User has not set github name")
 
-	return redirect(reverse_lazy('Accounts-profile', args=[request.user.id,]))
+	return redirect(reverse_lazy('Accounts-profile-pk', args=[request.user.id,]))

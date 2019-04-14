@@ -1,8 +1,17 @@
 {%extends 'header.html'%}
 {% block content %}
 <div class="container">
-	<h2>Hi {{object.name}} <a class="btn" href="{% url 'Accounts-edit' %}"
-			style="float:right">Edit</a> </h2>
+	<h2>
+		{% ifequal object.id request.user.id %}		
+		Hi {{object.name}} 
+		{% else %}
+			{{object.name}}
+		{% endifequal %}
+		{% ifequal object.id request.user.id %}
+		<a class="btn" href="{% url 'Accounts-edit' %}"
+			style="float:right">Edit</a> 
+			{% endifequal %}
+		</h2>
 	<hr>
 	<div style="color:red">
 			{% if messages %}
@@ -28,13 +37,15 @@
 			</div>
 		</div>
 	</div>
-
-  <div class="table-showcase">
+	<h5>Some Projects by {{object.name}}</h5>
+	<hr>
+	<div class="table-showcase">
     <table class="showcase">
       <tr>
         <th>Title</th>
         <th>Description</th>
-        <th>Programming language</th>
+				<th>Programming language</th>
+				<th>Starts</th>				
         <th>Date Created</th>
       </tr>
       {% for repo in repos %}
@@ -42,6 +53,7 @@
         <td><a href="{{repo.url}}">{{repo.name}}</a></td>
         <td>{{repo.discription}}</td>
         <td>{{repo.languages}}</td>
+        <td>{{repo.stars}}</td>
         <td>{{repo.created_at}}</th>
       </tr>
       {% endfor %}
@@ -49,11 +61,13 @@
   </div>
 
 	<br><br>
+	{% ifequal object.id request.user.id %}
 	<a style="float:right ;" class="btn green" href="{% url 'github-repos' %}">Update Projects</a>
 	<br>
 	<br>
 	<a style="float:right" class="btn" href="{% url 'password_change' %}">Change
 		Password</a>
+	{% endifequal %}
 </div>
 <br><br><br><br>
 {% endblock %}
