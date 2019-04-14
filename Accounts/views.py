@@ -15,7 +15,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 
 
-class ProfileUserView(LoginRequiredMixin, DetailView):
+class ProfileUserView(DetailView):
 	model = get_user_model()
 	template_name = 'Accounts/profile_user.html'
 
@@ -103,7 +103,7 @@ def Check_git_hub(request):
 	print(request.user.github_name)
 	if request.user.github_name:
 
-		# try:
+		try:
 			req = requests.get(f"https://api.github.com/users/{request.user.github_name}/repos")
 			json = req.json()
 			json[0]['description']
@@ -118,8 +118,9 @@ def Check_git_hub(request):
 				Github_model.objects.create(user=request.user, name=i['name'], 
 				url=i['svn_url'], discription=i['description'] or '', languages=i['language'] or '',
 				created_at=created_at, stars=i['stargazers_count'])
-		# except:
-		# 	messages.error(request, "You are out of requests for this hour")
+		except KeyError as e:
+			messages.error(request, "You are out of requests for this hour")
+			print(e)
 
 	else:
 		messages.error(request, "User has not set github name")
