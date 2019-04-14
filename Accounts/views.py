@@ -124,4 +124,4 @@ def Check_git_hub(request):
 	else:
 		messages.error(request, "User has not set github name")
 
-	return redirect(reverse_lazy('Accounts-profile-pk', args=[request.user.id,]))
+	return redirect(reverse_lazy('Accounts-profile', args=[request.user.id,]))
