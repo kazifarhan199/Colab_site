@@ -1,15 +1,67 @@
 
     {%extends 'header.html'%}
+    {% load my_tags %}
     {%block content%}
-  <div class="container">
-        <h1>All Projects</h1>
-        <hr>
+    <!-- <div style="background-color:#000"> -->
+         <!-- <br>    -->
+        <!-- </div> -->
+        <div class="parallax-container" style="width:100%;">
+                <div class="parallax"><img src="https://materializecss.com/images/parallax1.jpg" ></div>
+    </div>
+    <div class="section white">
+        <div class="row container">
+            <h2 class="header">Our Members</h2>
+            {% for u in users %}
+            {% user_repos  u  as repos%}
+            <a class="grey-text text-darken-3 lighten-3" href="{% url 'Accounts-profile' u.id %}"><h3> <img src="{{u.image.url}}" alt="" class="circle responsive-img"
+style="background-color:#fff;height:60px;width:60px;bottom:-10px;vertical-align:middle"> 
+                {{u.name}}</h3></a>
+            <hr>
+            <div class="table-showcase">
+                    <table class="showcase">
+                      <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                                <th>Programming language</th>
+                                <th>Starts</th>				
+                        <th>Date Created</th>
+                      </tr>
+                      {% for repo in repos %}
+                        <tr>
+                        <td><a href="{{repo.url}}">{{repo.name}}</a></td>
+                        <td>{{repo.discription}}</td>
+                        <td>{{repo.languages}}</td>
+                        <td>{{repo.stars}}</td>
+                        <td>{{repo.created_at}}</th>
+                      </tr>
+                      {% empty%}
+                      <tr>
+                          <td>
+                              <h5>Not Linked</h5>
+
+                          </td>
+                        </tr>
+                      {% endfor %}
+                    </table>
+                </div>
+                {%endfor%}
+            <br>
+        </div>
+    </div>
+    <div class="container">
+        <h5>Posts</h5>
+        <hr>    
         <div style="color: red">
-        {% if form.errors %}
-            {% for error in form.errors.values %}
+            {% if form.errors %}
+                {% for error in form.errors.values %}
                 {{error}}
             {% endfor %}
-        {% endif %}
+            {% endif %}
+            {% if messages %}
+            {%for message in messages %}
+                {{message}}
+            {% endfor %}
+            {% endif %}
         </div>
         {% for object in object_list %}
           <div class="collection">
@@ -19,17 +71,17 @@
         </div>
         {%empty%}
             
-              <h3>No thing found</h3>
+              <h6 style="text-align:center">No Posts</h6>
             
         {%endfor%}
-    
+        
     </div>
 
 
     <br>
     <br><br>
     <br><br>
-
+    
     <script type="text/javascript">
     var urlParams = new URLSearchParams(window.location.search);
     var p = urlParams.get('q');
@@ -37,4 +89,4 @@
     </script>	
 
 
-    {%endblock%}
+{%endblock%}

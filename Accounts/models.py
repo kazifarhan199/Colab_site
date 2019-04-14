@@ -61,8 +61,10 @@ class User(AbstractBaseUser):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs) 
-
-
+    
+    @property
+    def printer(self):
+        return "Apple"
 
 class Github_model(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)

@@ -7,6 +7,8 @@ from .models import Projects_model
 from django.db.models import Q
 from braces.views import LoginRequiredMixin, AnonymousRequiredMixin
 from django.contrib import messages 
+from django.contrib.auth import get_user_model
+from Accounts.models import Github_model
 
 class Projects_List(ListView):
     model = Projects_model
@@ -16,6 +18,10 @@ class Projects_List(ListView):
         context = self.model.objects.filter(published=True).order_by('-id')
         return context
 
+    def get_context_data(self, *args, **kwargs):
+        context =  super(Projects_List, self).get_context_data(**kwargs)
+        context['users'] = get_user_model().objects.all().order_by('id')
+        return context
 
 class Projects_Dashboard_List(LoginRequiredMixin, ListView):
     model = Projects_model
