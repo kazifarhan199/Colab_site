@@ -66,7 +66,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
             'libraries':{
-                'my_tags': 'Accounts.templates.my_tags',
+                'my_tags': 'Accounts.my_tags',
             }
         },
     },
@@ -132,3 +132,8 @@ AUTH_USER_MODEL = 'Accounts.User'
 # Email send for debugging
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+if 'DATABASE_URL' in os.environ:
+    import dj_database_url
+    DATABASES = {'default': dj_database_url.config()}

@@ -10,40 +10,43 @@
     </div>
     <div class="section white">
         <div class="row container">
-            <h2 class="header">Our Members</h2>
+            <h5 class="header">Our Members</h5>
             {% for u in users %}
-            {% user_repos  u  as repos%}
-            <a class="grey-text text-darken-3 lighten-3" href="{% url 'Accounts-profile' u.id %}"><h3> <img src="{{u.image.url}}" alt="" class="circle responsive-img"
-style="background-color:#fff;height:60px;width:60px;bottom:-10px;vertical-align:middle"> 
-                {{u.name}}</h3></a>
-            <hr>
-            <div class="table-showcase">
-                    <table class="showcase">
-                      <tr>
-                        <th>Title</th>
-                        <th>Description</th>
-                                <th>Programming language</th>
-                                <th>Starts</th>				
-                        <th>Date Created</th>
-                      </tr>
-                      {% for repo in repos %}
+            {% if u.github_name %}
+                {% user_repos  u  as repos%}
+                <a class="grey-text text-darken-3 lighten-3" href="{% url 'Accounts-profile' u.id %}">
+                    <h5> <img src="{{u.image.url}}" alt="" class="circle responsive-img"
+    style="background-color:#fff;height:60px;width:60px;bottom:-10px;vertical-align:middle"> 
+                    {{u.name}}</h5></a>
+                <hr>
+                <div class="table-showcase" style="overflow-x: scroll">
+                        <table class="showcase">
                         <tr>
-                        <td><a href="{{repo.url}}">{{repo.name}}</a></td>
-                        <td>{{repo.discription}}</td>
-                        <td>{{repo.languages}}</td>
-                        <td>{{repo.stars}}</td>
-                        <td>{{repo.created_at}}</th>
-                      </tr>
-                      {% empty%}
-                      <tr>
-                          <td>
-                              <h5>Not Linked</h5>
-
-                          </td>
+                            <th>Title</th>
+                            <th>Description</th>
+                                    <th>Programming language</th>
+                                    <th>Starts</th>				
+                            <th>Date Created</th>
                         </tr>
-                      {% endfor %}
-                    </table>
-                </div>
+                        {% for repo in repos %}
+                            <tr>
+                            <td><a href="{{repo.url}}">{{repo.name}}</a></td>
+                            <td>{{repo.discription}}</td>
+                            <td>{{repo.languages}}</td>
+                            <td>{{repo.stars}}</td>
+                            <td>{{repo.created_at}}</th>
+                        </tr>
+                        {% empty%}
+                        <tr>
+                            <td>
+                                <h5>Not Linked</h5>
+
+                            </td>
+                            </tr>
+                        {% endfor %}
+                        </table>
+                    </div>
+                    {% endif %}
                 {%endfor%}
             <br>
         </div>
