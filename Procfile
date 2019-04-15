@@ -1,0 +1,1 @@
+web: gunicorn Colab_site.wsgi:application --log-file -
