@@ -46,24 +46,23 @@
           {% endif %}
           <!-- LOGO -->
         <!-- Hand bar -->
-        <!-- <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a> -->
-        <!-- <ul class="right hide-on-med-and-down"> -->
-          <!-- <li><a href="sass.html">Sass</a></li> -->
-          <!-- </ul> -->
+        {% if user.is_authenticated %}
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="{% url 'Projects-dashboard' %}">Dashboard</a></li>
+        </ul>
+        {% endif %}
           <!-- End Hand bar -->
         </div>
     </nav>
     <!-- Hand bar body -->
-    <!--  
+
     <ul class="sidenav" id="mobile-demo">
-      <li><a style="background-color: #000; width: 100%;height: 150px"><img src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2F2.bp.blogspot.com%2F_Ww1vGgseiLE%2FTItgdt_a8VI%2FAAAAAAAAAAw%2FnxxuaUaMNns%2Fs1600%2Fkaizen.jpg&f=1" style="height:150px"> </a></li>
+      <li><a style="background-color: #000; width: 100%;height: 150px"><img src="{{user.image.url}}" class="circle responsive-img" style="height:150px;width:150px"> </a></li>
       {% if user.is_authenticated %}
-      <li><a href='{ url "Accounts-profile"%}'>Profile</a></li>
-        <li><a href='{% url "Accounts-logout"%}'>Logout</a></li>
-      {% else %}
-      <li><a href='{% url "Accounts-login" %}'>Login</a></li>
+      <li><a href="{% url 'Projects-dashboard' %}">Dashboard</a></li>
       {% endif %}
-    </ul> -->
+    </ul>
     <!-- End Hand bar body -->
     
     <!-- Nave bar End -->
