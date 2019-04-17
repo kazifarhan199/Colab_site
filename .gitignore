@@ -75,7 +75,7 @@ docs/_build/
 target/
 # Static files
 static/
-
+static_root/
 
 # Jupyter Notebook
 .ipynb_checkpoints
