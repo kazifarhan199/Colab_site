@@ -9,6 +9,10 @@ from braces.views import LoginRequiredMixin, AnonymousRequiredMixin
 from django.contrib import messages 
 from django.contrib.auth import get_user_model
 from Accounts.models import Github_model
+from django.shortcuts import render
+
+def Home_Page(request):
+    return render(request, "index.html")
 
 class Projects_List(ListView):
     model = Projects_model
