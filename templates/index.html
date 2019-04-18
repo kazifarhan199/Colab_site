@@ -2,14 +2,14 @@
 <head>
     <title>GENESIS OPEN SOURCE</title>
         {%load static%}
-            <link href="colab_site/{% static 'colab_site/css/style.css' %}" rel="stylesheet" type="text/css">
+            <link href="{% static 'Colab_site/css/style.css' %}" rel="stylesheet" type="text/css">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
             <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
 
         <!-- jQuery Library -->
        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
-       <script src="colab_site/{% static 'colab_site/js/caroufredsel.js' %}" type="text/javascript"></script>
+       <script src="{% static 'Colab_site/js/caroufredsel.js' %}" type="text/javascript"></script>
        
        <!-- Latest compiled JavaScript -->
         
@@ -19,7 +19,7 @@
     <header>
         <div class="container">
             <div class="row">
-                <a href=""><img src="colab_site/{% static 'colab_site/image/logo-2.png' %}"></a>
+                <a href=""><img src="{% static 'Colab_site/image/logo-2.png' %}"></a>
                 <nav>
                     <ul>
                         <li><a href="{%url "Projects-list" %}">Home</a></li>
@@ -153,6 +153,6 @@
 </section>
 
     
-    <script src="colab_site/{% static 'colab_site/js/main.js' %}" type="text/javascript"></script>
+    <script src="{% static 'Colab_site/js/main.js' %}" type="text/javascript"></script>
 </body>
 </html>
