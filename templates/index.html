@@ -1,0 +1,158 @@
+<html>
+<head>
+    <title>GENESIS OPEN SOURCE</title>
+        {%load static%}
+            <link href="colab_site/{% static 'colab_site/css/style.css' %}" rel="stylesheet" type="text/css">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+            <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+
+        <!-- jQuery Library -->
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+       <script src="colab_site/{% static 'colab_site/js/caroufredsel.js' %}" type="text/javascript"></script>
+       
+       <!-- Latest compiled JavaScript -->
+        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head> 
+<body>
+    <header>
+        <div class="container">
+            <div class="row">
+                <a href=""><img src="colab_site/{% static 'colab_site/image/logo-2.png' %}"></a>
+                <nav>
+                    <ul>
+                        <li><a href="{%url "Projects-list" %}">Home</a></li>
+                        <li><a href="{%url "Projects-list" %}">Projects</a></li>
+                        <li><a href="{%url "Projects-list" %}">Posts</a></li>
+                        <li><a href="https://discord.gg/hRzpyjy">Discord</a></li>
+                        <li><a href="{%url "Projects-list" %}">Credits</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <section class="slider">
+        <ul  class="slidr-carousel" id="slider-carousel"> 
+            <li class="img1">
+                    <h2>THE GENESIS GROUP <span>TEMPLATE</span></h2>
+
+
+                    <p><br
+                        >OPEN SOURCE PROJECT PLATFORM
+                    
+                    </p><br>
+ 
+                 <p><br>
+                        PROJECTS ON OPEN SOURCE SOFTWARE
+                    </p><br>
+
+                    <a href="{% url "Accounts-login" %}" class="btn btn-half">LOGIN/REGISTER</a>
+                    <a href="https://discord.gg/hRzpyjy" class="btn btn-full">DISCORD</a>
+
+            </li>
+            <li class="img1">
+                    <h2>THE GENESIS GROUP <span>TEMPLATE</span></h2>
+
+
+                    <p><br
+                        >OPEN SOURCE PROJECT PLATFORM
+                    
+                    </p><br>
+ 
+                 <p><br>
+                        PROJECTS ON OPEN SOURCE SOFTWARE
+                    </p><br>
+
+                    <a href="{% url "Accounts-login" %}" class="btn btn-half">LOGIN/REGISTER</a>
+                    <a href="https://discord.gg/hRzpyjy" class="btn btn-full">DISCORD</a>
+
+            </li>
+            <li class="img1">
+                    <h2>THE GENESIS GROUP <span>TEMPLATE</span></h2>
+
+
+                    <p><br
+                        >OPEN SOURCE PROJECT PLATFORM
+                    
+                    </p><br>
+ 
+                 <p><br>
+                        PROJECTS ON OPEN SOURCE SOFTWARE
+                    </p><br>
+
+                    <a href="{% url "Accounts-login" %}" class="btn btn-half">LOGIN/REGISTER</a>
+                    <a href="https://discord.gg/hRzpyjy" class="btn btn-full">DISCORD</a>
+
+            </li>
+        </ul>
+
+    </section>
+
+    <section class="intro-area white">
+    <div class="container">
+        <div class="col-sm-12 text-center">
+               <h2>WHAT WE BUILD</h2><br>
+               <div class="sub-heading">
+                    <p>
+                    This is all about ideas! Its what we do,its what we innovate here at GENESIS
+                    that makes it different than any other programming clan in this planet.Our 
+                    concern lies totally with open source programming and algorithms.We are not
+                    university toppers or geniuses but tend to build some of the most demanding
+                    projects and share it on the web.Let it be programming let it be hacking,we 
+                    have got all sort of people here but what we find common is that they are all
+                    innovative.We welcome you all to join us on our discord chanel GENESIS.
+                   </p>
+
+               </div> 
+            <div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+
+                <div class="intro-block">
+                    <span class="intro-icon"><i class="fas fa-project-diagram fa-2x"></i></span>
+                    <h3>All projects</h3>
+                    <p>
+                       Here you will get a list of all the open source projects with github link.
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+
+                    <div class="intro-block">
+                        <span class="intro-icon"><i class="fas fa-blog fa-2x"></i></span>
+                        <h3>All posts</h3>
+                        <p>
+                            Here you will get all the announcements and posts  
+                        </p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+
+                        <div class="intro-block">
+                            <span class="intro-icon"><i class="fas fa-code fa-2x"></i></span>
+                            <h3>Develoment Page</h3>
+                            <p>
+                                A list of all the development plans to be done<br>
+                                by GENESIS.
+                            </p>
+                        </div>
+                    </div>
+        </div>
+
+
+
+
+
+        
+    </div>
+
+</section>
+
+    
+    <script src="colab_site/{% static 'colab_site/js/main.js' %}" type="text/javascript"></script>
+</body>
+</html>

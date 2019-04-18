@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
+    {% load static %}
     <meta charset="utf-8">
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
-
+      {{ form.media }}
     <title>Universal Projects</title>
 
     <!--Import materialize.css-->
@@ -13,6 +14,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="{% static "tinymce/css/prism.css" %}" rel="stylesheet">
   </head>
 
   <body>
@@ -77,8 +79,13 @@
       20px">
       <div class="container">
         © 2019 Copyright
-        <a class="grey-text text-lighten-4 right"
-          href="https://github.com/KaziFarhanuddin/">KaziFarhanuddin</a>
+        <a class="grey-text text-lighten-4 right"href="https://github.com/KaziFarhanuddin/">KaziFarhanuddin</a>
+        <br>
+        <a class="grey-text text-lighten-4 right"href="https://github.com/shahriar0247">Shahriar0247</a>
+        <br>
+        <a class="grey-text text-lighten-4 right"href="https://github.com/HrishabhChakraborty">HrishabhChakraborty</a>
+        <br>
+        <a class="grey-text text-lighten-4 right"href="https://github.com/Tech-Shujan">Tech-Shujan</a>
         </div>
         <br><br>
     </footer>
@@ -90,6 +97,6 @@
       <script>
         M.AutoInit();
         </script>
-
+  <script src="{% static "tinymce/js/prism.js" %}"></script>
   </body>
   </html>

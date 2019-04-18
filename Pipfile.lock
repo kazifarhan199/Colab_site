@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "42cc33edd7978d1316e049a275fd70fa87600a9650f5914c5151c990b3f91798"
+            "sha256": "f516ea42d1b6aca981307260739604679a7de06474f6e3bd65b7ddbae2eccf9a"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -61,6 +61,14 @@
             "index": "pypi",
             "version": "==0.3.1"
         },
+        "django-tinymce4-lite": {
+            "hashes": [
+                "sha256:90bef25a20f43b57040ad631605de3bcccccc7ac760c42640edbf459062af8d2",
+                "sha256:cf4a41abc704e56515eb48d9d8fd3c56ceeb9705419bdff2b8a375e2131524f8"
+            ],
+            "index": "pypi",
+            "version": "==1.7.4"
+        },
         "gunicorn": {
             "hashes": [
                 "sha256:aa8e0b40b4157b36a5df5e599f45c9c76d6af43845ba3b3b0efe2c70473c2471",
@@ -75,6 +83,12 @@
                 "sha256:ea8b7f6188e6fa117537c3df7da9fc686d485087abf6ac197f9c46432f7e4a3c"
             ],
             "version": "==2.8"
+        },
+        "jsmin": {
+            "hashes": [
+                "sha256:b6df99b2cd1c75d9d342e4335b535789b8da9107ec748212706ef7bbe5c2553b"
+            ],
+            "version": "==2.2.2"
         },
         "pillow": {
             "hashes": [
@@ -124,6 +138,15 @@
             ],
             "version": "==2.8.2"
         },
+        "pyenchant": {
+            "hashes": [
+                "sha256:b9526fc2c5f1ba0637e50200b645a7c20fb6644dbc6f6322027e7d2fbf1084a5",
+                "sha256:e8000144e61551fcab9cd1b6fdccdded20e577e8d6d0985533f0b2b9c38fd952",
+                "sha256:fc31cda72ace001da8fe5d42f11c26e514a91fa8c70468739216ddd8de64e2a0"
+            ],
+            "index": "pypi",
+            "version": "==2.0.0"
+        },
         "pytz": {
             "hashes": [
                 "sha256:303879e36b721603cc54604edcac9d20401bdbe31e1e4fdee5b9f98d5d31dfda",
@@ -148,10 +171,10 @@
         },
         "urllib3": {
             "hashes": [
-                "sha256:61bf29cada3fc2fbefad4fdf059ea4bd1b4a86d2b6d15e1c7c0b582b9752fe39",
-                "sha256:de9529817c93f27c8ccbfead6985011db27bd0ddfcdb2d86f3f663385c6a9c22"
+                "sha256:4c291ca23bbb55c76518905869ef34bdd5f0e46af7afe6861e8375643ffee1a0",
+                "sha256:9a247273df709c4fedb38c711e44292304f73f39ab01beda9f6b9fc375669ac3"
             ],
-            "version": "==1.24.1"
+            "version": "==1.24.2"
         },
         "whitenoise": {
             "hashes": [

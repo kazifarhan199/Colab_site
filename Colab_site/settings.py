@@ -39,7 +39,23 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Projects',
+    'tinymce',
 ]
+
+TINYMCE_DEFAULT_CONFIG = {
+    'selector': 'textarea',
+    'theme': 'modern',
+    'plugins': 'link image preview codesample contextmenu table code lists',
+    'toolbar1': 'formatselect | bold italic underline | alignleft aligncenter alignright alignjustify '
+               '| bullist numlist | outdent indent | table | link image | codesample | preview code',
+    'contextmenu': 'formats | link image',
+    'menubar': False,
+    'inline': False,
+    'statusbar': True,
+    'width': 'auto',
+    'height': 660,
+    'content_css':'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css',
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -56,7 +72,7 @@ ROOT_URLCONF = 'Colab_site.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ["templates",],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
