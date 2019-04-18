@@ -13,7 +13,16 @@ from django.contrib import messages
 import datetime
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
+from captcha.fields import CaptchaField
 
+from django import forms
+from captcha.fields import CaptchaField
+
+class CaptchaTestModelForm(forms.ModelForm):
+	captcha = CaptchaField()
+	class Meta:
+		model = User
+		fields = ['email', 'name', 'captcha']
 
 class ProfileUserView(DetailView):
 	model = get_user_model()
@@ -30,8 +39,7 @@ class ProfileUserView(DetailView):
 		return context
 
 class CreateUserView(AnonymousRequiredMixin, CreateView):
-	model = get_user_model()
-	fields = ['email', 'name']
+	form_class= CaptchaTestModelForm
 	template_name = 'Accounts/create_user.html'
 	success_url = reverse_lazy('Accounts-login')
 
@@ -50,6 +58,10 @@ class CreateUserView(AnonymousRequiredMixin, CreateView):
 
 		form.instance.set_password(password1)
 
+		if form.is_valid():
+			human = True
+		else :
+			return super(CreateUserView, self).form_invalid(form, *args, **kwargs)
 		return super(CreateUserView, self).form_valid(form, *args, **kwargs)
     
 class LoginUserView(AnonymousRequiredMixin, LoginView):
