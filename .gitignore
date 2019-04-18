@@ -6,6 +6,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Other repos from front end team
+genesissite1/ 
+
 # C extensions
 *.so
 *.jpg
