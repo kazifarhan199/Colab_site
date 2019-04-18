@@ -77,7 +77,6 @@ docs/_build/
 # PyBuilder
 target/
 # Static files
-static/
 static_root/
 
 # Jupyter Notebook
