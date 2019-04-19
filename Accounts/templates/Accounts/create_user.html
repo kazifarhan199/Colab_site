@@ -3,7 +3,15 @@
 <div class="container">
 	<h1>Register</h1>
 	<hr>
-	<form method="post">{% csrf_token %}
+	<form method="post">
+	<div style="color: red">
+			{% if form.errors %}
+			{% for error in form.errors.values %}
+			{{error}}
+			{% endfor %}
+			{% endif %}
+		</div>
+		{% csrf_token %}
 		{{ form.as_p }}
 		<label>Password</label>
 		<input type="password" name="password1">

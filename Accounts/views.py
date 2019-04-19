@@ -48,6 +48,14 @@ class CreateUserView(AnonymousRequiredMixin, CreateView):
 		password1 = self.request.POST.get('password1')
 		password2 = self.request.POST.get('password2')
 
+		check_mail = email.split('@')[0]
+		mail_domain = email.split('@')[1]
+
+		if mail_domain.lower() == "gmail.com":
+			if len(check_mail) < 6 or len(check_mail) > 30:
+				form.errors["error"]="Don't put fake emails"
+				return super(CreateUserView, self).form_invalid(form, *args, **kwargs)			
+
 		if password1 != password2:
 			form.errors["error"]="Password and Re-Password don't match"
 			return super(CreateUserView, self).form_invalid(form, *args, **kwargs)
