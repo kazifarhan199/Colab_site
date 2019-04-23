@@ -20,9 +20,13 @@ from django.views.static import serve
 
 urlpatterns = [
     path('', include('Projects.urls')),
-    path('admin/', admin.site.urls),  
-    path('accounts/', include('Accounts.urls')),
+
+    path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
+    path('mainadmin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
+    path('myadmin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
+    path('someadmin/', admin.site.urls),  
     
+    path('accounts/', include('Accounts.urls')),
     re_path(r'^captcha/', include('captcha.urls')),
     re_path(r'^tinymce/', include('tinymce.urls')),
     re_path(r'static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),

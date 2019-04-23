@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Projects',
     "captcha",
     'tinymce',
+    'admin_honeypot',
 ]
 
 TINYMCE_DEFAULT_CONFIG = {

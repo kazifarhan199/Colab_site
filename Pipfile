@@ -15,6 +15,7 @@ requests = "*"
 pillow = "*"
 django-tinymce4-lite = "*"
 django-simple-captcha = "*"
+django-admin-honeypot = "*"
 
 [requires]
 python_version = "3.7"
