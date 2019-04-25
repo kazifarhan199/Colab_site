@@ -22,10 +22,11 @@ urlpatterns = [
     path('', include('Projects.urls')),
 
     path('sameadmin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
-    path('mainadmin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
+    path('mainadmin/', include('admin_honeypot.urls', namespace='admin_honypot')),
     path('myadmin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
     path('someadmin/', admin.site.urls),  
-    
+    path('api/', include("api.urls")),
+
     path('accounts/', include('Accounts.urls')),
     re_path(r'^captcha/', include('captcha.urls')),
     re_path(r'^tinymce/', include('tinymce.urls')),
